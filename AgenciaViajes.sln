@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgenciaViajes.API", "AgenciaViajes.API\AgenciaViajes.API.csproj", "{8DB65F38-CFF0-4777-A6C5-59B17AE064BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgenciaViajes.API", "src\AgenciaViajes.API\AgenciaViajes.API.csproj", "{8DB65F38-CFF0-4777-A6C5-59B17AE064BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgenciaViajes.Application", "AgenciaViajes.Application\AgenciaViajes.Application.csproj", "{2AF4B2A9-2DBE-4A58-9601-7D2942D45D9A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgenciaViajes.Application", "src\AgenciaViajes.Application\AgenciaViajes.Application.csproj", "{2AF4B2A9-2DBE-4A58-9601-7D2942D45D9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgenciaViajes.Domain", "AgenciaViajes.Domain\AgenciaViajes.Domain.csproj", "{9D0B07D9-9D2F-4E31-A1A5-5043EA8A83D1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgenciaViajes.Domain", "src\AgenciaViajes.Domain\AgenciaViajes.Domain.csproj", "{9D0B07D9-9D2F-4E31-A1A5-5043EA8A83D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgenciaViajes.Infrastructure", "AgenciaViajes.Infrastructure\AgenciaViajes.Infrastructure.csproj", "{09C021E1-85E7-4154-8295-8489C34B83BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgenciaViajes.Infrastructure", "src\AgenciaViajes.Infrastructure\AgenciaViajes.Infrastructure.csproj", "{09C021E1-85E7-4154-8295-8489C34B83BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
