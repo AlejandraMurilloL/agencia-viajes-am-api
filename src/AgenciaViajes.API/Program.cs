@@ -1,4 +1,5 @@
 using AgenciaViajes.API;
+using AgenciaViajes.API.Extensions;
 using AgenciaViajes.Application;
 using AgenciaViajes.Infrastructure;
 
@@ -25,6 +26,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseErrorHandler();
 
 app.UseHttpsRedirection();
 
