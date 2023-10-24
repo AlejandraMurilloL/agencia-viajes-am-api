@@ -10,6 +10,13 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.22.0" />
+    <PackageReference Include="MongoDB.Driver.Core" Version="2.22.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AgenciaViajes.Application\AgenciaViajes.Application.csproj" />
+    <ProjectReference Include="..\AgenciaViajes.Domain\AgenciaViajes.Domain.csproj" />
   </ItemGroup>
 
 </Project>

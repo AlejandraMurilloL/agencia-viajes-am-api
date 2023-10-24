@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AgenciaViajes.Domain.Entities
 {
-    internal class TipoHabitacion
+    internal class Guest
     {
     }
 }

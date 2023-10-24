@@ -1,6 +1,6 @@
 ﻿namespace AgenciaViajes.Domain.Entities
 {
-    public class Usuario
+    public class User
     {
     }
 }
