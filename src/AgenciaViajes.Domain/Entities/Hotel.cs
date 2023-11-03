@@ -15,6 +15,32 @@ namespace AgenciaViajes.Domain.Entities
         public Hotel()
         {
             Rooms = new List<Room>();
+            Active = true;
         }
+
+        public Hotel WithName(string name)
+        {
+            Name = name;
+            return this;
+        }
+        public Hotel WithDescription(string description)
+        {
+            Description = description;
+            return this;
+        }
+
+        public Hotel WithCity(string city)
+        {
+            City = city;
+            return this;
+        }
+
+        public Hotel WithState(bool active)
+        {
+            Active = active;
+            return this;
+        }
+
+
     }
 }
