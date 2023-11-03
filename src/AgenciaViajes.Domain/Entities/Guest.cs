@@ -3,9 +3,9 @@ using MongoDB.Bson;
 
 namespace AgenciaViajes.Domain.Entities
 {
-    public class Guest : IDocument
+    public class Guest 
     {
-        public ObjectId Id { get; set; }
+        public string Id { get; set; } = null!;
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
         public DateTime Birthday { get; set; }

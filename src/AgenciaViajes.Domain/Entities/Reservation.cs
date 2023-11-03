@@ -12,6 +12,11 @@ namespace AgenciaViajes.Domain.Entities
         public DateTime EndDate { get; set; }
         public string ContactName { get; set; } = null!;
         public string ContactPhone { get; set; } = null!;
-       
+        public List<Guest> Guests { get; set; }
+        public Reservation()
+        {
+            Guests = new List<Guest>();
+        }
+
     }
 }

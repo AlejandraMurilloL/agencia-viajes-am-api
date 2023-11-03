@@ -1,4 +1,5 @@
-﻿using AgenciaViajes.Application.Features.UserTypeFeatures.Queries.GetUserTypes;
+﻿using AgenciaViajes.Application.Features.HotelFeatures.Queries.GetHotelsByUser;
+using AgenciaViajes.Application.Features.UserTypeFeatures.Queries.GetUserTypes;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -11,6 +12,9 @@ namespace AgenciaViajes.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddScoped<IGetUserTypesQuery, GetUserTypesQuery>();
+
+            // Hotels
+            services.AddScoped<IGetHotelsByUserQuery, GetHotelsByUserQuery>();
 
             return services;
         }

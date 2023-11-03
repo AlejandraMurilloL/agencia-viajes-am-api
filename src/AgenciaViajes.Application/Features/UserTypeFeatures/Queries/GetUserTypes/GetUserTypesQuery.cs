@@ -5,7 +5,7 @@ using AutoMapper;
 
 namespace AgenciaViajes.Application.Features.UserTypeFeatures.Queries.GetUserTypes
 {
-    internal class GetUserTypesQuery : IGetUserTypesQuery
+    public class GetUserTypesQuery : IGetUserTypesQuery
     {
         private readonly IRepository<UserType> _userTypeRepository;
         private readonly IMapper _mapper;

@@ -13,7 +13,9 @@ namespace AgenciaViajes.Infrastructure
         {
             services.Configure<MongoDBSettings>(configuration.GetSection("MongoDbSettings"));
 
+            // Repositories
             services.AddScoped<IRepository<UserType>, MongoRepository<UserType>>();
+            services.AddScoped<IRepository<Hotel>, MongoRepository<Hotel>>();
 
             return services;
         }

@@ -10,5 +10,11 @@ namespace AgenciaViajes.Domain.Entities
         public string? Description { get; set; }
         public string City { get; set; } = null!;
         public bool Active { get; set; }
+        public List<Room> Rooms { get; set; }
+
+        public Hotel()
+        {
+            Rooms = new List<Room>();
+        }
     }
 }
