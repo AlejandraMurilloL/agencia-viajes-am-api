@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AgenciaViajes.Domain.Common;
+using MongoDB.Bson;
 
 namespace AgenciaViajes.Domain.Entities
 {
-    internal class Hotel
+    public class Hotel : IDocument
     {
+        public ObjectId Id { get; set; }
+        public string Name { get; set; } = null!;
+        public string? Description { get; set; }
+        public string City { get; set; } = null!;
+        public bool Active { get; set; }
     }
 }
