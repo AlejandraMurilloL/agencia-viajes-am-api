@@ -46,5 +46,18 @@ namespace AgenciaViajes.Domain.Entities
             Rooms.Add(room);
             return this;
         }
+
+        public Room GetRoom(string roomId)
+        {
+            return Rooms.First(r => r.Id == roomId);
+        }
+
+        public Hotel UpdateRoom(Room room)
+        {
+            Rooms = Rooms.Where(x => x.Id != room.Id).ToList();
+            Rooms.Add(room);
+
+            return this;
+        }
     }
 }
