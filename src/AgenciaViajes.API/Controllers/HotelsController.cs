@@ -2,6 +2,7 @@
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.CreateHotelRoom;
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotel;
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelRoom;
+using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelStatus;
 using AgenciaViajes.Application.Features.HotelFeatures.Queries.GetHotelsByUser;
 using AgenciaViajes.Application.Features.UserTypeFeatures.Queries.GetUserTypes;
 using AgenciaViajes.Domain.Entities;
@@ -30,12 +31,21 @@ namespace AgenciaViajes.API.Controllers
             return Ok();
         }
 
-        [HttpPut]
+        [HttpPut("{Id}")]
         public async Task<ActionResult> Put(
            [FromServices] IUpdateHotelCommand updateHotel,
            UpdateHotelRequest hotel)
         {
             await updateHotel.Execute(hotel);
+            return Ok();
+        }
+
+        [HttpPut("{Id}/Status")]
+        public async Task<ActionResult> PutStatus(
+           [FromServices] IUpdateHotelStatusCommand updateHotelStatus,
+           UpdateHotelStatusRequest hotel)
+        {
+            await updateHotelStatus.Execute(hotel);
             return Ok();
         }
 
