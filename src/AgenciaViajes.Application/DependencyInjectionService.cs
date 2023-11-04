@@ -1,5 +1,6 @@
 ﻿using AgenciaViajes.Application.Features.HotelFeatures.Commands.CreateHotel;
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.CreateHotelRoom;
+using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotel;
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelRoom;
 using AgenciaViajes.Application.Features.HotelFeatures.Queries.GetHotelsByUser;
 using AgenciaViajes.Application.Features.UserTypeFeatures.Queries.GetUserTypes;
@@ -21,6 +22,7 @@ namespace AgenciaViajes.Application
             // Hotels
             services.AddScoped<IGetHotelsByUserQuery, GetHotelsByUserQuery>();
             services.AddScoped<ICreateHotelCommand, CreateHotelCommand>();
+            services.AddScoped<IUpdateHotelCommand, UpdateHotelCommand>();
             services.AddScoped<ICreateHotelRoomCommand, CreateHotelRoomCommand>();
             services.AddScoped<IUpdateHotelRoomCommand, UpdateHotelRoomCommand>();
 

@@ -1,5 +1,6 @@
 ﻿using AgenciaViajes.Application.Features.HotelFeatures.Commands.CreateHotel;
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.CreateHotelRoom;
+using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotel;
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelRoom;
 using AgenciaViajes.Application.Features.HotelFeatures.Queries.GetHotelsByUser;
 using AgenciaViajes.Application.Features.UserTypeFeatures.Queries.GetUserTypes;
@@ -26,6 +27,15 @@ namespace AgenciaViajes.API.Controllers
            CreateHotelRequest hotel)
         {
             await createHotel.Execute(hotel);
+            return Ok();
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> Put(
+           [FromServices] IUpdateHotelCommand updateHotel,
+           UpdateHotelRequest hotel)
+        {
+            await updateHotel.Execute(hotel);
             return Ok();
         }
 
