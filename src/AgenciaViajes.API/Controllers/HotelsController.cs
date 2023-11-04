@@ -2,6 +2,7 @@
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.CreateHotelRoom;
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotel;
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelRoom;
+using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelRoomStatus;
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelStatus;
 using AgenciaViajes.Application.Features.HotelFeatures.Queries.GetHotelsByUser;
 using AgenciaViajes.Application.Features.UserTypeFeatures.Queries.GetUserTypes;
@@ -64,6 +65,15 @@ namespace AgenciaViajes.API.Controllers
            UpdateHotelRoomRequest room)
         {
             await updateHotelRoom.Execute(room);
+            return Ok();
+        }
+
+        [HttpPut("{hotelId}/Rooms/{roomId}/Status")]
+        public async Task<ActionResult> PutRoomStatus(
+           [FromServices] IUpdateHotelRoomStatusCommand updateHotelRoomStatus,
+           UpdateHotelRoomStatusRequest room)
+        {
+            await updateHotelRoomStatus.Execute(room);
             return Ok();
         }
     }

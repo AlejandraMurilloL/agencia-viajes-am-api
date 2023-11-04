@@ -1,5 +1,4 @@
-﻿using AgenciaViajes.Domain.Common;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 
 namespace AgenciaViajes.Domain.Entities
 {
@@ -48,6 +47,12 @@ namespace AgenciaViajes.Domain.Entities
         public Room WithLocation(string location)
         {
             Location = location;
+            return this;
+        }
+
+        public Room WithStatus(bool active)
+        {
+            Active = active;
             return this;
         }
 
