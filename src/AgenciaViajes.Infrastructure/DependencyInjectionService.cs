@@ -16,6 +16,7 @@ namespace AgenciaViajes.Infrastructure
             // Repositories
             services.AddScoped<IRepository<UserType>, MongoRepository<UserType>>();
             services.AddScoped<IRepository<Hotel>, MongoRepository<Hotel>>();
+            services.AddScoped<IRepository<RoomType>, MongoRepository<RoomType>>();
 
             return services;
         }

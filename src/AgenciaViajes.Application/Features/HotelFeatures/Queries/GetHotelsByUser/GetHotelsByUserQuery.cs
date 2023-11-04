@@ -1,6 +1,4 @@
-﻿using AgenciaViajes.Application.Common.Exceptions;
-using AgenciaViajes.Application.Features.UserTypeFeatures.Queries.GetUserTypes;
-using AgenciaViajes.Application.Repositories;
+﻿using AgenciaViajes.Application.Repositories;
 using AgenciaViajes.Domain.Entities;
 using AutoMapper;
 

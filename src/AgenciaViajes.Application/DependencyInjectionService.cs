@@ -5,6 +5,7 @@ using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelRoom;
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelRoomStatus;
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelStatus;
 using AgenciaViajes.Application.Features.HotelFeatures.Queries.GetHotelsByUser;
+using AgenciaViajes.Application.Features.RoomTypes.Queries.GetAllRoomTypes;
 using AgenciaViajes.Application.Features.UserTypeFeatures.Queries.GetUserTypes;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +20,7 @@ namespace AgenciaViajes.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
+            // User Types
             services.AddScoped<IGetUserTypesQuery, GetUserTypesQuery>();
 
             // Hotels
@@ -29,6 +31,9 @@ namespace AgenciaViajes.Application
             services.AddScoped<ICreateHotelRoomCommand, CreateHotelRoomCommand>();
             services.AddScoped<IUpdateHotelRoomCommand, UpdateHotelRoomCommand>();
             services.AddScoped<IUpdateHotelRoomStatusCommand, UpdateHotelRoomStatusCommand>();
+
+            // Room Types
+            services.AddScoped<IGetAllRoomTypesQuery, GetAllRoomTypesQuery>();
 
             return services;
         }
