@@ -5,8 +5,6 @@ using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelRoom;
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelRoomStatus;
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelStatus;
 using AgenciaViajes.Application.Features.HotelFeatures.Queries.GetHotelsByUser;
-using AgenciaViajes.Application.Features.UserTypeFeatures.Queries.GetUserTypes;
-using AgenciaViajes.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AgenciaViajes.API.Controllers
@@ -16,7 +14,7 @@ namespace AgenciaViajes.API.Controllers
     public class HotelsController : ControllerBase
     {
         [HttpGet]
-        public async Task<ActionResult<List<GetUserTypesResponse>>> GetByUser(
+        public async Task<ActionResult<List<GetHotelsByUserResponse>>> GetByUser(
            [FromServices] IGetHotelsByUserQuery getHotelsByUser)
         {
             var response = await getHotelsByUser.Execute();

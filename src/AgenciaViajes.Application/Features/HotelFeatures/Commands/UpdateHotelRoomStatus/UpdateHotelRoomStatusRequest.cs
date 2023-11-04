@@ -2,8 +2,8 @@
 {
     public class UpdateHotelRoomStatusRequest
     {
-        public required string Id { get; set; }
-        public required string HotelId { get; set; }
+        public int Id { get; set; }
+        public int HotelId { get; set; }
         public bool Active { get; set; }
     }
 }

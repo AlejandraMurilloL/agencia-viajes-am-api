@@ -1,25 +1,23 @@
-﻿using AgenciaViajes.Application.Repositories;
-using AgenciaViajes.Domain.Entities;
-using AutoMapper;
+﻿using AutoMapper;
 
 namespace AgenciaViajes.Application.Features.HotelFeatures.Queries.GetHotelsByUser
 {
     public class GetHotelsByUserQuery : IGetHotelsByUserQuery
     {
-        private readonly IRepository<Hotel> _hotelRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
         public GetHotelsByUserQuery(
-            IRepository<Hotel> hotelRepository,
+            IUnitOfWork unitOfWork,
             IMapper mapper)
         {
-            _hotelRepository = hotelRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
         public async Task<List<GetHotelsByUserResponse>> Execute()
         {
-            var hotels = _hotelRepository.AsQueryable();
+            var hotels = await _unitOfWork.HotelRepository.GetAllAsync();
 
             if (hotels == null)
                 return new List<GetHotelsByUserResponse>();

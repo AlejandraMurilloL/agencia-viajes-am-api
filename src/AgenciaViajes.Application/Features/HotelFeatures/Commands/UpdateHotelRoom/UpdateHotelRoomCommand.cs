@@ -1,21 +1,18 @@
 ﻿using AgenciaViajes.Application.Common.Exceptions;
-using AgenciaViajes.Application.Repositories;
-using AgenciaViajes.Domain.Entities;
 using FluentValidation;
-using MongoDB.Bson;
 
 namespace AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelRoom
 {
     public class UpdateHotelRoomCommand : IUpdateHotelRoomCommand
     {
-        private readonly IRepository<Hotel> _hotelRespository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IValidator<UpdateHotelRoomRequest> _validator;
 
         public UpdateHotelRoomCommand(
-            IRepository<Hotel> hotelRespository,
+            IUnitOfWork unitOfWork,
             IValidator<UpdateHotelRoomRequest> validator)
         {
-            _hotelRespository = hotelRespository;
+            _unitOfWork = unitOfWork;
             _validator = validator;
         }
 
@@ -23,7 +20,7 @@ namespace AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelR
         {
             ValidateModel(model);
 
-            var hotel = await _hotelRespository.FindOneAsync(x => x.Id == ObjectId.Parse(model.HotelId));
+            var hotel = await _unitOfWork.HotelRepository.GetByIdAsync(model.HotelId);
 
             if (hotel == null)
                 throw new NotFoundException($"El Hotel con Id {model.HotelId} no existe.");
@@ -40,7 +37,8 @@ namespace AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelR
 
             var hotelUpdated = hotel.UpdateRoom(roomUpdated);
 
-            await _hotelRespository.ReplaceOneAsync(hotelUpdated);
+            await _unitOfWork.HotelRepository.UpdateAsync(hotelUpdated);
+            await _unitOfWork.SaveAsync();
         }
 
         private void ValidateModel(UpdateHotelRoomRequest model)

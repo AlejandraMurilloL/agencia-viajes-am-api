@@ -1,27 +1,18 @@
 ﻿using AgenciaViajes.Application.Common.Exceptions;
-using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelRoom;
-using AgenciaViajes.Application.Repositories;
-using AgenciaViajes.Domain.Entities;
 using FluentValidation;
-using MongoDB.Bson;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelRoomStatus
 {
     public class UpdateHotelRoomStatusCommand: IUpdateHotelRoomStatusCommand
     {
-        private readonly IRepository<Hotel> _hotelRespository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IValidator<UpdateHotelRoomStatusRequest> _validator;
 
         public UpdateHotelRoomStatusCommand(
-            IRepository<Hotel> hotelRespository,
+            IUnitOfWork unitOfWork,
             IValidator<UpdateHotelRoomStatusRequest> validator)
         {
-            _hotelRespository = hotelRespository;
+            _unitOfWork = unitOfWork;
             _validator = validator;
         }
 
@@ -29,7 +20,7 @@ namespace AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelR
         {
             ValidateModel(model);
 
-            var hotel = await _hotelRespository.FindOneAsync(x => x.Id == ObjectId.Parse(model.HotelId));
+            var hotel = await _unitOfWork.HotelRepository.GetByIdAsync(model.HotelId);
 
             if (hotel == null)
                 throw new NotFoundException($"El Hotel con Id {model.HotelId} no existe.");
@@ -42,7 +33,8 @@ namespace AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelR
             var roomUpdated = room.WithStatus(model.Active);
             var hotelUpdated = hotel.UpdateRoom(roomUpdated);
 
-            await _hotelRespository.ReplaceOneAsync(hotelUpdated);
+            await _unitOfWork.HotelRepository.UpdateAsync(hotelUpdated);
+            await _unitOfWork.SaveAsync();
         }
 
         private void ValidateModel(UpdateHotelRoomStatusRequest model)

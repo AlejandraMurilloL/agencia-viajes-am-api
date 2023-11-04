@@ -3,10 +3,10 @@
     public class CreateHotelRoomRequest
     {
         public required string Name { get; set; }
-        public required string HotelId { get; set; }
-        public double BaseCost { get; set; }
-        public double Taxes { get; set; }
-        public required string RoomTypeId { get; set; }
+        public int HotelId { get; set; }
+        public decimal BaseCost { get; set; }
+        public decimal Taxes { get; set; }
+        public int RoomTypeId { get; set; }
         public required string Location { get; set; }
     }
 }

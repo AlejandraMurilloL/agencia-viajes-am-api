@@ -1,7 +1,8 @@
-﻿using AgenciaViajes.Application.Repositories;
-using AgenciaViajes.Domain.Entities;
+﻿using AgenciaViajes.Application;
+using AgenciaViajes.Application.Repositories;
+using AgenciaViajes.Infrastructure.Database;
 using AgenciaViajes.Infrastructure.Repositories;
-using AgenciaViajes.Infrastructure.Settings;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,12 +12,17 @@ namespace AgenciaViajes.Infrastructure
     {
         public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
-            services.Configure<MongoDBSettings>(configuration.GetSection("MongoDbSettings"));
+            services.AddDbContext<AgenciaViajesContext>(opt =>
+            {
+                opt.UseSqlServer(configuration.GetConnectionString("AgenciaViajesDatabase"));
+            });
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             // Repositories
-            services.AddScoped<IRepository<UserType>, MongoRepository<UserType>>();
-            services.AddScoped<IRepository<Hotel>, MongoRepository<Hotel>>();
-            services.AddScoped<IRepository<RoomType>, MongoRepository<RoomType>>();
+            services.AddScoped<IHotelRepository, HotelRepository>();
+            services.AddScoped<IRoomTypeRepository, RoomTypeRepository>();
+            services.AddScoped<IReservationRepository, ReservationRepository>();
 
             return services;
         }

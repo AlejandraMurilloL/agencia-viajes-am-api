@@ -18,8 +18,4 @@
     <ProjectReference Include="..\AgenciaViajes.Domain\AgenciaViajes.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\UserTypeFeatures\Commands\" />
-  </ItemGroup>
-
 </Project>

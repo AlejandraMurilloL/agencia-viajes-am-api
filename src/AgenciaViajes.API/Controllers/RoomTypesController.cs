@@ -1,6 +1,4 @@
 ﻿using AgenciaViajes.Application.Features.RoomTypes.Queries.GetAllRoomTypes;
-using AgenciaViajes.Application.Features.UserTypeFeatures.Queries.GetUserTypes;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AgenciaViajes.API.Controllers

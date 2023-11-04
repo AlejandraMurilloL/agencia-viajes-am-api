@@ -1,21 +1,19 @@
 ﻿using AgenciaViajes.Application.Common.Exceptions;
-using AgenciaViajes.Application.Repositories;
 using AgenciaViajes.Domain.Entities;
-using AutoMapper;
 using FluentValidation;
 
 namespace AgenciaViajes.Application.Features.HotelFeatures.Commands.CreateHotel
 {
     public class CreateHotelCommand : ICreateHotelCommand
     {
-        private readonly IRepository<Hotel> _hotelRespository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IValidator<CreateHotelRequest> _validator;
 
         public CreateHotelCommand(
-            IRepository<Hotel> hotelRespository, 
+            IUnitOfWork unitOfWork, 
             IValidator<CreateHotelRequest> validator)
         {
-            _hotelRespository = hotelRespository;
+            _unitOfWork = unitOfWork;
             _validator = validator;
         }
 
@@ -28,7 +26,8 @@ namespace AgenciaViajes.Application.Features.HotelFeatures.Commands.CreateHotel
                 .WithCity(model.City)
                 .WithDescription(model.Description ?? string.Empty);
 
-            await _hotelRespository.InsertOneAsync(newHotel);
+            await _unitOfWork.HotelRepository.AddAsync(newHotel);
+            await _unitOfWork.SaveAsync();
         }
 
         private void ValidateModel(CreateHotelRequest model)

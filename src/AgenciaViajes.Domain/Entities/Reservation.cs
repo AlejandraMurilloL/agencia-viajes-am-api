@@ -1,22 +1,16 @@
 ﻿using AgenciaViajes.Domain.Common;
-using MongoDB.Bson;
 
-namespace AgenciaViajes.Domain.Entities
+namespace AgenciaViajes.Domain.Entities;
+
+public partial class Reservation : BaseEntity
 {
-    public class Reservation : IDocument
-    {
-        public ObjectId Id { get; set; }
-        public ObjectId HotelId { get; set; }
-        public ObjectId RoomId { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public string ContactName { get; set; } = null!;
-        public string ContactPhone { get; set; } = null!;
-        public List<Guest> Guests { get; set; }
-        public Reservation()
-        {
-            Guests = new List<Guest>();
-        }
-
-    }
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set; }
+    public string ContactName { get; set; } = null!;
+    public string ContactPhone { get; set; } = null!;
+    public int HotelId { get; set; }
+    public int RoomId { get; set; }
+    public virtual ICollection<Guest> Guests { get; set; } = new List<Guest>();
+    public virtual Hotel Hotel { get; set; } = null!;
+    public virtual Room Room { get; set; } = null!;
 }
