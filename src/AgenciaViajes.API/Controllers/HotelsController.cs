@@ -1,4 +1,5 @@
 ﻿using AgenciaViajes.Application.Features.HotelFeatures.Commands.CreateHotel;
+using AgenciaViajes.Application.Features.HotelFeatures.Commands.CreateHotelRoom;
 using AgenciaViajes.Application.Features.HotelFeatures.Queries.GetHotelsByUser;
 using AgenciaViajes.Application.Features.UserTypeFeatures.Queries.GetUserTypes;
 using AgenciaViajes.Domain.Entities;
@@ -24,6 +25,15 @@ namespace AgenciaViajes.API.Controllers
            CreateHotelRequest hotel)
         {
             await createHotel.Execute(hotel);
+            return Ok();
+        }
+
+        [HttpPost("{hotelId}/Rooms")]
+        public async Task<ActionResult> PostRoom(
+           [FromServices] ICreateHotelRoomCommand createHotelRoom,
+           CreateHotelRoomRequest room)
+        {
+            await createHotelRoom.Execute(room);
             return Ok();
         }
     }

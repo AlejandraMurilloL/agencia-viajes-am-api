@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\HotelFeatures\Commands\NewFolder\" />
     <Folder Include="Features\UserTypeFeatures\Commands\" />
   </ItemGroup>
 

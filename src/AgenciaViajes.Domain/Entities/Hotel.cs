@@ -41,6 +41,10 @@ namespace AgenciaViajes.Domain.Entities
             return this;
         }
 
-
+        public Hotel AddRoom(Room room)
+        {
+            Rooms.Add(room);
+            return this;
+        }
     }
 }

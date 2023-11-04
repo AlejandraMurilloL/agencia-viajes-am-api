@@ -9,16 +9,13 @@ namespace AgenciaViajes.Application.Features.HotelFeatures.Commands.CreateHotel
     public class CreateHotelCommand : ICreateHotelCommand
     {
         private readonly IRepository<Hotel> _hotelRespository;
-        private readonly IMapper _mapper;
         private readonly IValidator<CreateHotelRequest> _validator;
 
         public CreateHotelCommand(
             IRepository<Hotel> hotelRespository, 
-            IMapper mapper, 
             IValidator<CreateHotelRequest> validator)
         {
             _hotelRespository = hotelRespository;
-            _mapper = mapper;
             _validator = validator;
         }
 
