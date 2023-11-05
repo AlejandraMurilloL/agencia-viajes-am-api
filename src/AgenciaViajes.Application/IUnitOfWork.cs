@@ -7,6 +7,7 @@ namespace AgenciaViajes.Application
         IHotelRepository HotelRepository { get; set; }
         IRoomTypeRepository RoomTypeRepository { get; set; }
         IReservationRepository ReservationRepository { get; set; }
+        IRoomRepository RoomRepository { get; set; }
         Task<int> SaveAsync();
     }
 }
