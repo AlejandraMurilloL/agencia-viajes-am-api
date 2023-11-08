@@ -4,7 +4,9 @@ using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotel;
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelRoom;
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelRoomStatus;
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelStatus;
+using AgenciaViajes.Application.Features.HotelFeatures.Queries.GetHotelById;
 using AgenciaViajes.Application.Features.HotelFeatures.Queries.GetHotelsByUser;
+using AgenciaViajes.Application.Features.ReservationFeatures.Command.CreateReservation;
 using AgenciaViajes.Application.Features.ReservationFeatures.Queries.GetAvailableRooms;
 using AgenciaViajes.Application.Features.ReservationFeatures.Queries.GetReservations;
 using AgenciaViajes.Application.Features.RoomTypes.Queries.GetAllRoomTypes;
@@ -23,6 +25,7 @@ namespace AgenciaViajes.Application
 
             // Hotels
             services.AddScoped<IGetHotelsByUserQuery, GetHotelsByUserQuery>();
+            services.AddScoped<IGetHotelByIdQuery, GetHotelByIdQuery>();
             services.AddScoped<ICreateHotelCommand, CreateHotelCommand>();
             services.AddScoped<IUpdateHotelCommand, UpdateHotelCommand>();
             services.AddScoped<IUpdateHotelStatusCommand, UpdateHotelStatusCommand>();
@@ -36,6 +39,7 @@ namespace AgenciaViajes.Application
             // Reservations
             services.AddScoped<IGetReservationsQuery, GetReservationsQuery>();
             services.AddScoped<IGetAvailableRoomsQuery, GetAvailableRoomsQuery>();
+            services.AddScoped<ICreateReservationCommand, CreateReservationCommand>();
 
             return services;
         }

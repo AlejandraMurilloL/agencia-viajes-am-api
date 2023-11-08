@@ -8,6 +8,7 @@ namespace AgenciaViajes.Application.Features.HotelFeatures.Queries.GetHotelsByUs
         public GetHotelsByUserMapper()
         {
             CreateMap<Hotel, GetHotelsByUserResponse>();
+            CreateMap<Room, HotelRoom>();
         }
     }
 }

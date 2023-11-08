@@ -4,6 +4,7 @@ using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotel;
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelRoom;
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelRoomStatus;
 using AgenciaViajes.Application.Features.HotelFeatures.Commands.UpdateHotelStatus;
+using AgenciaViajes.Application.Features.HotelFeatures.Queries.GetHotelById;
 using AgenciaViajes.Application.Features.HotelFeatures.Queries.GetHotelsByUser;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,15 @@ namespace AgenciaViajes.API.Controllers
            [FromServices] IGetHotelsByUserQuery getHotelsByUser)
         {
             var response = await getHotelsByUser.Execute();
+            return Ok(response);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<List<GetHotelsByUserResponse>>> GetById(
+           [FromServices] IGetHotelByIdQuery getHotelById,
+           int id)
+        {
+            var response = await getHotelById.Execute(id);
             return Ok(response);
         }
 

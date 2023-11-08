@@ -1,4 +1,4 @@
-﻿using AgenciaViajes.Application.Features.HotelFeatures.Queries.GetHotelsByUser;
+﻿using AgenciaViajes.Application.Features.ReservationFeatures.Command.CreateReservation;
 using AgenciaViajes.Application.Features.ReservationFeatures.Queries.GetAvailableRooms;
 using AgenciaViajes.Application.Features.ReservationFeatures.Queries.GetReservations;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +24,15 @@ namespace AgenciaViajes.API.Controllers
         {
             var response = await getAvailableRooms.Execute(filter);
             return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Post(
+           [FromServices] ICreateReservationCommand createReservation,
+           CreateReservationRequest model)
+        {
+            await createReservation.Execute(model);
+            return Ok();
         }
     }
 }

@@ -1,8 +1,6 @@
-﻿using MongoDB.Bson;
-
-namespace AgenciaViajes.Application.Features.HotelFeatures.Queries.GetHotelsByUser
+﻿namespace AgenciaViajes.Application.Features.HotelFeatures.Queries.GetHotelById
 {
-    public class GetHotelsByUserResponse 
+    public class GetHotelByIdResponse
     {
         public string Id { get; set; } = null!;
         public string Name { get; set; } = null!;
@@ -11,7 +9,7 @@ namespace AgenciaViajes.Application.Features.HotelFeatures.Queries.GetHotelsByUs
         public bool Active { get; set; }
         public List<HotelRoom> Rooms { get; set; }
 
-        public GetHotelsByUserResponse()
+        public GetHotelByIdResponse()
         {
             Rooms = new List<HotelRoom>();
         }
