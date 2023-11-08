@@ -18,7 +18,7 @@ namespace AgenciaViajes.Application.Features.ReservationFeatures.Queries.GetRese
 
         public async Task<List<GetReservationsResponse>> Execute()
         {
-            var reservations = await _unitOfWork.RoomTypeRepository.GetAllAsync();
+            var reservations = await _unitOfWork.ReservationRepository.GetAllAsync();
 
             if (reservations == null)
                 return new List<GetReservationsResponse>();

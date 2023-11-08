@@ -31,7 +31,15 @@ namespace AgenciaViajes.Application.Features.ReservationFeatures.Queries.GetAvai
             if (availableRooms == null)
                 return new List<GetAvailableRoomsResponse>();
 
-            return _mapper.Map<List<GetAvailableRoomsResponse>>(availableRooms);
+            var result = _mapper.Map<List<GetAvailableRoomsResponse>>(availableRooms);
+
+            foreach (var item in result)
+            {
+                item.StartDate = filter.StartDate;
+                item.EndDate = filter.EndDate;
+            }
+
+            return result;
         }
     }
 }

@@ -8,7 +8,8 @@ namespace AgenciaViajes.Application.Features.ReservationFeatures.Queries.GetRese
         public GetReservationsMapper() 
         {
             CreateMap<Reservation, GetReservationsResponse>();
-            CreateMap<Guest, GuestResponse>();
+            CreateMap<Guest, GuestResponse>()
+                .ForMember(x => x.ContactPhone, x => x.MapFrom(src => src.Phone));
         }
     }
 }
