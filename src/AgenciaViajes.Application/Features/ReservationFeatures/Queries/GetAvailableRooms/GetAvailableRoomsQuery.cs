@@ -22,6 +22,7 @@ namespace AgenciaViajes.Application.Features.ReservationFeatures.Queries.GetAvai
 
             var availableRooms = rooms.Where(x => x.RoomType.PeopleCapacity == filter.PeopleCount &&
                                                   x.Hotel.City.Contains(filter.City) &&
+                                                  x.Hotel.Active && x.Active &&
                                                   (!x.Reservations.Any() || 
                                                    !x.Reservations.Any(x => filter.StartDate >= x.StartDate && x.StartDate <= filter.EndDate ||
                                                                             filter.StartDate >= x.EndDate && x.EndDate <= filter.EndDate)));  
